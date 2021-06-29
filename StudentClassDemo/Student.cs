@@ -6,12 +6,14 @@ namespace StudentClassDemo
 {
     class Student
     {
-        private string name;
-        private int idNumber;
+        //private string name;
+        //private int idNumber;
         //private double dNum;
+
+
         private double score1;
         private double score2;
-        private double averageScore;
+        //private double averageScore;
 
 
         public Student():this("unknown",-1)
@@ -29,77 +31,66 @@ namespace StudentClassDemo
 
         public Student(string newName, int newIdNumber)
         {
-            this.name = newName;
-            this.idNumber = newIdNumber;
+            this.Name = newName;
+            this.IdNumber = newIdNumber;
         }
-    public static void DoStuff()
-        {
-            Student molly = new Student();
-            molly.name = "Molly";
-            molly.idNumber = 43;
+   // public static void DoStuff()
+        //{
+           // Student molly = new Student();
+           // molly.name = "Molly";
+            //molly.idNumber = 43;
             //molly.dNum = 67.0;
-            Console.WriteLine("Molly: {0}", molly.name);
-            Console.WriteLine("Molly: {0}", molly.idNumber);
+            //Console.WriteLine("Molly: {0}", molly.name);
+            //Console.WriteLine("Molly: {0}", molly.idNumber);
             //Console.WriteLine("Molly: {0}", molly.dNum);
 
-            Student someStudent = new Student();
-            Console.WriteLine("someStudent: {0}", someStudent.name);
-            Console.WriteLine("someStudent: {0}", someStudent.idNumber);
+            //Student someStudent = new Student();
+            //Console.WriteLine("someStudent: {0}", someStudent.name);
+            //Console.WriteLine("someStudent: {0}", someStudent.idNumber);
             //Console.WriteLine("someStudent: {0}", someStudent.dNum);
-        }
+        //}
 
+        public string Name { get; set; }
+        public int IdNumber { get; set; }
 
-
-        public string GetName()
+        public double Score1
         {
-            return name;
+            get { return this.score1; }
+            set { this.score1 = value;UpdateAverageScore(); }
+        }
+        public double Score2
+        {
+            get { return this.score2; }
+            set { this.score2 = value; UpdateAverageScore(); }
         }
 
-        public void SetName(string newName)
+        public double HighScore
         {
-            name = newName;
+            get
+            {
+                if (score1 > score2)
+                {
+                    return score1;
+                }
+                else
+                {
+                    return score2;
+                }
+            }
         }
+        public double AverageScore { get; private set; }
 
-        public int GetIdNumber()
-        {
-            return this.idNumber;
-        }
 
-        public void SetIdNumber(int newIdNumber)
-        {
-            this.idNumber = newIdNumber;
-        }
+        
 
-        public double GetScore1()
-        {
-            return this.score1;
-        }
-
-        public void SetScore1(double newScore1)
-        {
-            this.score1 = newScore1;
-            UpdateAverageScore();
-        }
-
-        public double GetScore2()
-        {
-            return this.score2;
-        }
-
-        public void SetScore2(double newScore2)
-        {
-            this.score2 = newScore2;
-            UpdateAverageScore();
-        }
-
-        public double GetAverageScore()
-        {
-            return averageScore;
-        }
+        //public double GetAverageScore()
+        //{
+        //    return averageScore;
+        //}
 
         private void UpdateAverageScore()
         {
-            averageScore = (score1 + score2) / 2;
+            AverageScore = (score1 + score2) / 2;
         }
 
         public double GetHighScore()
