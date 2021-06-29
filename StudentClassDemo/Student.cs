@@ -14,12 +14,25 @@ namespace StudentClassDemo
         private double averageScore;
 
 
-        public Student()
+        public Student():this("unknown",-1)
         {
-
+            
         }
 
-        public static void DoStuff()
+        public Student(int newIdNumber):this("unknown",newIdNumber)
+        {
+        }
+        public Student(string newName):this(newName,-1)
+        {
+            
+        }
+
+        public Student(string newName, int newIdNumber)
+        {
+            this.name = newName;
+            this.idNumber = newIdNumber;
+        }
+    public static void DoStuff()
         {
             Student molly = new Student();
             molly.name = "Molly";
